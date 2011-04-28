@@ -3,17 +3,6 @@
 TODO
 ====
 
-* Move repo to GitHub fxtlabs/winst
-
-  - Remove existing winst repo from GitHub fxtlabs and fxt
-  - Create new fxtlabs/winst repo
-  - Setup gh_pages branch
-  - Setup correct links in project.clj
-  - Setup milestones under Issues tab
-  - Disable Wiki
-  - Setup custom domain winst.fxtlabs.com
-  - Push a new snapshot to clojars.org
-
 * Improve error handling and reporting
 * Add tests
 * Add sanity checks on activity list
