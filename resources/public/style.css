@@ -1,0 +1,25 @@
+table {
+    border-collapse: separate;
+    border-spacing: 15pt 5pt;
+}
+tr:nth-child(even) {
+    background: #DDD;
+}
+th {
+    vertical-align: top;
+}
+th, td {
+    text-align: left;
+}
+td.date, th.date {
+    text-align: left;
+    max-width: 5em;
+}
+td.activity, th.activity {
+    text-align: left;
+    max-width: 5em;
+}
+td.number, th.number {
+    text-align: right;
+    max-width: 5em;
+}

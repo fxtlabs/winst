@@ -1,0 +1,86 @@
+.. -*- restructuredtext -*-
+
+TODO
+====
+
+* Move repo to GitHub fxtlabs/winst
+
+  - Remove existing winst repo from GitHub fxtlabs and fxt
+  - Create new fxtlabs/winst repo
+  - Setup gh_pages branch
+  - Setup correct links in project.clj
+  - Setup milestones under Issues tab
+  - Disable Wiki
+  - Setup custom domain winst.fxtlabs.com
+  - Push a new snapshot to clojars.org
+
+* Improve error handling and reporting
+* Add tests
+* Add sanity checks on activity list
+* Write README file
+* More CSS
+* Sell/Buy 'at' or 'for' ('at' may imply the amount given is 'per share')
+* Add navigation
+* Tag repo
+* Release 1.0
+
+* Automatically download exchange rates so they cover the period up to now
+* Add account groups for collated reporting
+* Add 'sort=[date|description|symbol]' query parameter to control sorting
+  order of report
+* Automatically discover and load exchange rate data files
+* Use clojure.contrib.probability for random activity generator
+* Make it possible to overwrite style.css
+
+
+NOTES
+-----
+
+http://www.goldb.org/ystockquote.html has Python code to get
+historical stock quotes from Yahoo! Finance.
+
+http://www.gummy-stuff.org/Yahoo-data.htm documents Yahoo! stock
+quotes service.
+
+http://ichart.finance.yahoo.com/table.csv?s=AAPL&ignore=.csv will
+return a CSV file with the full historical quotes for the given
+symbol.
+
+* How should commissions be accounted for? Explicitly? Implicitly?
+
+
+WEBSITE
+-------
+
+Sidebar has 3 sections:
+
+1. Description
+2. Holdings - lists available months and years for holdings list
+3. Realized gains - lists available years for realized gains list
+
+Logo takes you to / (no sidebar)
+Top tabs list available accounts; first tab is All
+
+Buttonset right of top tabs selects reporting currency
+
+Print uses its own CSS and hides logo, navigation menu, currency
+buttonset, sidebar, and footer
+
+WEBSITE 2
+---------
+
+Otherwise, there could be a sidebar with two sections:
+
+top
+  list of accounts
+
+bottom
+  list of years for the selected account
+  (each year can be clicked or expanded to see a list of months)
+
+The top of the page would have three tabs (activities, holdings, and
+gains) and a toggle for the reporting currency (account currency or
+CAD).
+
+The page would keep state as you move around accounts, etc.
+
