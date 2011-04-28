@@ -47,7 +47,9 @@ namespace.
   <h1 class="nopad">Table of Contents</h1>
   <div style="margin-left: 1em;" class="toc-section">
     <a href="#toc0">Overview</a>
-    
+    <div style="margin-left: 1em;" class="toc-entry">
+      <a href="#winst.routes/main-routes">main-routes</a>
+    </div>
     <br />
   </div>
 </div>
@@ -64,7 +66,43 @@ by <span id="author">Filippo Tampieri &lt;fxt@fxtlabs.com&gt;</span><br />
 and realized gains/losses for an account over a specified period of time.</pre>
 <br />
 <h2>Public Variables and Functions</h2>
-
+<div id="var-entry">
+  <br />
+  <hr />
+  <h2 id="winst.routes/main-routes">main-routes</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (main-routes accounts)
+</pre>
+  <pre id="var-docstr">Returns a handler that can respond to requests related to the given
+sequence of accounts.
+An account is a map with the following keywords:
+:tag         A keyword corresponding to the name used to identify the
+             account in a URL.
+:name        The name of the account as it should appear on the reports.
+:description A description of the account.
+:holder      The name of the account holder as it should appear on the reports.
+:type        The type of the account (as a keyword). For example, :cash or
+             :margin.
+:currency    The currency used for the account (as a keyword). Currently,
+             only :usd (USD) and :cad (CAD) are supported.
+:activities  The sequence of trading activities for the account. See
+             winst.dsl/activity for details.
+The URLs this handler responds to must be of the form
+'/accounts/&lt;ACCOUNT&gt;/&lt;ASPECT&gt;/&lt;YEAR&gt;/&lt;MONTH&gt;' where:
+&lt;ACCOUNT&gt;    The short name for the account (see :tag key above).
+&lt;ASPECT&gt;     One of 'holdings', 'activities', or 'gains'.
+&lt;YEAR&gt;       The year for which the report is desired. If omitted, the
+             report will be generated for the current date (since account
+             inception for activities and realized gains). If present,
+             &lt;MONTH&gt; part must also be present.
+&lt;MONTH&gt;      The month (1 to 12) for which the report is desired. If
+             omitted, the report will be for a whole year or for the
+             lifespan of the account (see &lt;YEAR&gt;).
+The optional query parameter 'currency' can be added to the URL to
+specify the currency to be used for the report. Possible values are USD
+or CAD.</pre>
+  <a href="http://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/routes.clj#L23" id="var-source">Source</a>
+</div>
 
 
 </div>
