@@ -21,7 +21,7 @@
      :copyright "Copyright 2011 Filippo Tampieri"
      :root "."
      :source-path "src"
-     :web-src-dir "https://github.com/fxtlabs/winst/blob/"
+     :web-src-dir "http://github.com/fxtlabs/winst/blob/"
      :web-home "http://winst.fxtlabs.com"
      :output-path "autodoc"
      :namespaces-to-document ["winst"]

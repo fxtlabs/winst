@@ -20,7 +20,7 @@
 (defvar- re-month #"0?[1-9]|1[012]"
   "The regular expression used to describe valid months (1 to 12) in a URL.")
 
-(defn main-routes [accounts]
+(defn main-routes
   "Returns a handler that can respond to requests related to the given
    sequence of accounts.
    An account is a map with the following keywords:
@@ -49,6 +49,7 @@
    The optional query parameter 'currency' can be added to the URL to
    specify the currency to be used for the report. Possible values are USD
    or CAD."
+  [accounts]
   (let [accounts (apply hash-map (mapcat (fn [a] [(:tag a) a]) accounts))
         handle-holdings (holdings-handler accounts)
         handle-activities (activities-handler accounts)
