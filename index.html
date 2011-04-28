@@ -1,0 +1,201 @@
+<html>
+  <head>
+    <title>Winst - Overview</title>
+    <link href="static/favicon.png" rel="icon" />
+    <link href="static/favicon.png" rel="shortcut icon" />
+    <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/wiki.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/internal.css" rel="stylesheet" />
+    <!-- TODO: are we using these (from clojure.org)? If so, add the files -->
+    <script src="file/view/code_highlighter.js" type="text/javascript"></script>
+    <script src="file/view/clojure.js" type="text/javascript"></script>
+    <style>.menuWrapper{height: 36px;}</style>
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" href="http://www.wikispaces.com/_/2009051601/s/internal_ie.css" type="text/css" />
+    <![endif]-->
+  </head>
+<!--
+This document was auto-generated from the source by the clojure autodoc system.
+To report errors or ask questions about the overall documentation structure, formatting,
+etc., contact Tom Faulhaber (google mail name: tomfaulhaber).
+For errors in the documentation of a particular namespace, contact the author of that
+namespace.
+-->
+  <body>
+    <div id="AllContentContainer">
+      <div id="Header">
+	<a id="Logo" href="index.html"><img alt="Clojure" height="100" width="100" src="static/clojure-icon.gif" /></a>
+	<h1><a title="page header title" id="page-header" href="index.html">Winst</a></h1>
+      </div>
+      <div id="leftcolumn"><div style="text-align: center;"></div>
+<div class="menu">
+  <div class="WikiCustomNav WikiElement wiki">
+    <a class="wiki_link" href="index.html">Overview</a><br />
+    <a class="wiki_link" href="api-index.html">API Index</a><br />
+    <a class="wiki_link" href="#">Namespaces:</a>
+    <ul id="left-sidebar-list">
+      <li><a href="winst.core-api.html" class="wiki_link">winst.core</a></li><li><a href="winst.currency-api.html" class="wiki_link">winst.currency</a></li><li><a href="winst.dsl-api.html" class="wiki_link">winst.dsl</a></li><li><a href="winst.handlers-api.html" class="wiki_link">winst.handlers</a></li><li><a href="winst.presentation-api.html" class="wiki_link">winst.presentation</a></li><li><a href="winst.routes-api.html" class="wiki_link">winst.routes</a></li><li><a href="winst.securities-api.html" class="wiki_link">winst.securities</a></li><li><a href="winst.utils-api.html" class="wiki_link">winst.utils</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+      <div id="rightcolumn">
+	<div id="Content">
+	  <div class="contentBox"><div class="innerContentBox">
+              <div id="content_view" class="wiki wikiPage">
+                <div id="right-sidebar"><div id="toc">
+  <h1 class="nopad">Table of Contents</h1>
+  <div style="margin-left: 1em;" class="toc-section">
+    <a href="#winst.core">winst.core</a>
+    
+    <br />
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#winst.currency">winst.currency</a>
+    
+    <br />
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#winst.dsl">winst.dsl</a>
+    
+    <br />
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#winst.handlers">winst.handlers</a>
+    
+    <br />
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#winst.presentation">winst.presentation</a>
+    
+    <br />
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#winst.routes">winst.routes</a>
+    
+    <br />
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#winst.securities">winst.securities</a>
+    
+    <br />
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#winst.utils">winst.utils</a>
+    
+    <br />
+  </div>
+</div>
+</div>
+                <div id="content-tag"><h1 id="toc0">An Overview of the <span id="header-project">Winst</span> API</h1>
+<br />
+<div id="project-description">Track your trading activities, holdings, and realized gains in multiple currencies.</div>
+<br />
+<div id="namespace-entry">
+  <br />
+  <hr />
+  <h2 id="winst.core">winst.core</h2>
+  by <span id="author">Filippo Tampieri &lt;fxt@fxtlabs.com&gt;</span><br />
+  <a href="winst.core-api.html" id="api-link">Detailed API documentation</a><br />
+  <pre id="namespace-docstr">The engine that processes trading activities to compute resulting
+holdings and realized gains/losses.</pre>
+  
+  Public variables and functions:
+  <span id="var-link"><a href="winst.core-api.html#winst.core/apply-activity" id="var-tag">apply-activity</a> </span><span id="var-link"><a href="winst.core-api.html#winst.core/compute-holdings" id="var-tag">compute-holdings</a> </span><span id="var-link"><a href="winst.core-api.html#winst.core/compute-holdings-seq" id="var-tag">compute-holdings-seq</a> </span><span id="var-link"><a href="winst.core-api.html#winst.core/compute-realized-gains" id="var-tag">compute-realized-gains</a> </span><span id="var-link"><a href="winst.core-api.html#winst.core/convert-activities" id="var-tag">convert-activities</a> </span><span id="var-link"><a href="winst.core-api.html#winst.core/convert-activity" id="var-tag">convert-activity</a> </span><span id="var-link"><a href="winst.core-api.html#winst.core/dated-before?" id="var-tag">dated-before?</a> </span><span id="var-link"><a href="winst.core-api.html#winst.core/dated-within?" id="var-tag">dated-within?</a> </span><span id="var-link"><a href="winst.core-api.html#winst.core/merge-by-date" id="var-tag">merge-by-date</a> </span><span id="var-link"><a href="winst.core-api.html#winst.core/sort-by-date" id="var-tag">sort-by-date</a> </span><br />
+  
+</div><div id="namespace-entry">
+  <br />
+  <hr />
+  <h2 id="winst.currency">winst.currency</h2>
+  by <span id="author">Filippo Tampieri &lt;fxt@fxtlabs.com&gt;</span><br />
+  <a href="winst.currency-api.html" id="api-link">Detailed API documentation</a><br />
+  <pre id="namespace-docstr">Services for working with different currencies, including parsing
+exchange rate CSV files and finding out the exchange rate for a
+given day.</pre>
+  
+  Public variables and functions:
+  <span id="var-link"><a href="winst.currency-api.html#winst.currency/currency-keyword" id="var-tag">currency-keyword</a> </span><span id="var-link"><a href="winst.currency-api.html#winst.currency/currency-name" id="var-tag">currency-name</a> </span><span id="var-link"><a href="winst.currency-api.html#winst.currency/get-exchange-rate-lookup" id="var-tag">get-exchange-rate-lookup</a> </span><br />
+  
+</div><div id="namespace-entry">
+  <br />
+  <hr />
+  <h2 id="winst.dsl">winst.dsl</h2>
+  by <span id="author">Filippo Tampieri &lt;fxt@fxtlabs.com&gt;</span><br />
+  <a href="winst.dsl-api.html" id="api-link">Detailed API documentation</a><br />
+  <pre id="namespace-docstr">An embedded domain specific language to easily describe trading activities.</pre>
+  
+  Public variables and functions:
+  <span id="var-link"><a href="winst.dsl-api.html#winst.dsl/activities" id="var-tag">activities</a> </span><span id="var-link"><a href="winst.dsl-api.html#winst.dsl/activity" id="var-tag">activity</a> </span><span id="var-link"><a href="winst.dsl-api.html#winst.dsl/get-security-uid" id="var-tag">get-security-uid</a> </span><br />
+  
+</div><div id="namespace-entry">
+  <br />
+  <hr />
+  <h2 id="winst.handlers">winst.handlers</h2>
+  by <span id="author">Filippo Tampieri &lt;fxt@fxtlabs.com&gt;</span><br />
+  <a href="winst.handlers-api.html" id="api-link">Detailed API documentation</a><br />
+  <pre id="namespace-docstr">Request handlers for the trading activity, holdings, and realized
+gains/losses of an account over a specified period of time.</pre>
+  
+  Public variables and functions:
+  <span id="var-link"><a href="winst.handlers-api.html#winst.handlers/activities-handler" id="var-tag">activities-handler</a> </span><span id="var-link"><a href="winst.handlers-api.html#winst.handlers/gains-handler" id="var-tag">gains-handler</a> </span><span id="var-link"><a href="winst.handlers-api.html#winst.handlers/holdings-handler" id="var-tag">holdings-handler</a> </span><br />
+  
+</div><div id="namespace-entry">
+  <br />
+  <hr />
+  <h2 id="winst.presentation">winst.presentation</h2>
+  by <span id="author">Filippo Tampieri &lt;fxt@fxtlabs.com&gt;</span><br />
+  <a href="winst.presentation-api.html" id="api-link">Detailed API documentation</a><br />
+  <pre id="namespace-docstr">The presentation layer of the winst server. It renders HTML reports
+for the trading activity, holdings, and realized gains/losses of an
+account over a specified period of time.</pre>
+  
+  Public variables and functions:
+  <span id="var-link"><a href="winst.presentation-api.html#winst.presentation/render-activities" id="var-tag">render-activities</a> </span><span id="var-link"><a href="winst.presentation-api.html#winst.presentation/render-error" id="var-tag">render-error</a> </span><span id="var-link"><a href="winst.presentation-api.html#winst.presentation/render-gains" id="var-tag">render-gains</a> </span><span id="var-link"><a href="winst.presentation-api.html#winst.presentation/render-holdings" id="var-tag">render-holdings</a> </span><span id="var-link"><a href="winst.presentation-api.html#winst.presentation/render-not-found" id="var-tag">render-not-found</a> </span><br />
+  
+</div><div id="namespace-entry">
+  <br />
+  <hr />
+  <h2 id="winst.routes">winst.routes</h2>
+  by <span id="author">Filippo Tampieri &lt;fxt@fxtlabs.com&gt;</span><br />
+  <a href="winst.routes-api.html" id="api-link">Detailed API documentation</a><br />
+  <pre id="namespace-docstr">Maps URLs to request handlers to report trading activity, holdings,
+and realized gains/losses for an account over a specified period of time.</pre>
+  
+  Public variables and functions:
+  <br />
+  
+</div><div id="namespace-entry">
+  <br />
+  <hr />
+  <h2 id="winst.securities">winst.securities</h2>
+  by <span id="author">Filippo Tampieri &lt;fxt@fxtlabs.com&gt;</span><br />
+  <a href="winst.securities-api.html" id="api-link">Detailed API documentation</a><br />
+  <pre id="namespace-docstr">Services for working with securities. It manages a list of all the
+companies listed on the NASDAQ, NYSE, and AMEX exchanges. The official
+lists are available for download as CSV files from the NASDAQ web site
+at <a href="http://www.nasdaq.com/screening/company-list.aspx">http://www.nasdaq.com/screening/company-list.aspx</a></pre>
+  
+  Public variables and functions:
+  <span id="var-link"><a href="winst.securities-api.html#winst.securities/lookup-security" id="var-tag">lookup-security</a> </span><span id="var-link"><a href="winst.securities-api.html#winst.securities/lookup-security-symbol" id="var-tag">lookup-security-symbol</a> </span><span id="var-link"><a href="winst.securities-api.html#winst.securities/securities-by-uid" id="var-tag">securities-by-uid</a> </span><span id="var-link"><a href="winst.securities-api.html#winst.securities/security-qualified-symbol" id="var-tag">security-qualified-symbol</a> </span><span id="var-link"><a href="winst.securities-api.html#winst.securities/security-uid" id="var-tag">security-uid</a> </span><br />
+  
+</div><div id="namespace-entry">
+  <br />
+  <hr />
+  <h2 id="winst.utils">winst.utils</h2>
+  by <span id="author">Filippo Tampieri &lt;fxt@fxtlabs.com&gt;</span><br />
+  <a href="winst.utils-api.html" id="api-link">Detailed API documentation</a><br />
+  <pre id="namespace-docstr">Utility functions used to prepare reports.</pre>
+  
+  Public variables and functions:
+  <span id="var-link"><a href="winst.utils-api.html#winst.utils/activity-type-name" id="var-tag">activity-type-name</a> </span><span id="var-link"><a href="winst.utils-api.html#winst.utils/format-currency" id="var-tag">format-currency</a> </span><span id="var-link"><a href="winst.utils-api.html#winst.utils/format-date" id="var-tag">format-date</a> </span><span id="var-link"><a href="winst.utils-api.html#winst.utils/format-percentage" id="var-tag">format-percentage</a> </span><span id="var-link"><a href="winst.utils-api.html#winst.utils/format-quantity" id="var-tag">format-quantity</a> </span><span id="var-link"><a href="winst.utils-api.html#winst.utils/normalize-activity" id="var-tag">normalize-activity</a> </span><br />
+  
+</div>
+</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div id="foot">
+	  <div style="text-align: center;" id="copyright">Copyright 2011 Filippo Tampieri</div>
+	</div>
+      </div>
+      <div id="DesignedBy">Logo &amp; site design by <a title="Visit Tom Hickey's website." href="http://www.tomhickey.com">Tom Hickey</a>.<br />
+      Clojure auto-documentation system by Tom Faulhaber.</div>
+    </div>
+    <!-- /AllContentContainer -->
+  </body>
+
+</html>
