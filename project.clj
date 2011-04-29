@@ -8,8 +8,8 @@
                  [ring "0.3.7"]
                  [compojure "0.6.2"]]
   :dev-dependencies 
-    [[autodoc "0.7.1" :exclusions [org.clojure/clojure
-                                   org.clojure/clojure-contrib]]]
+  [[com.fxtlabs/autodoc "0.8.0-SNAPSHOT"
+    :exclusions [org.clojure/clojure org.clojure/clojure-contrib]]]
   :dev-resources-path "example"
   :license {:name "Eclipse Public License - v 1.0"
             :url "http://www.eclipse.org/legal/epl-v10.html"
@@ -21,8 +21,8 @@
      :copyright "Copyright 2011 Filippo Tampieri"
      :root "."
      :source-path "src"
-     :web-src-dir "http://github.com/fxtlabs/winst/blob/"
-     :web-home "http://winst.fxtlabs.com"
+     :web-src-dir "https://github.com/fxtlabs/winst/blob/"
+     :web-home "http://winst.fxtlabs.com/"
      :output-path "autodoc"
      :namespaces-to-document ["winst"]
      :load-except-list [#"/test/" #"project.clj"]})
