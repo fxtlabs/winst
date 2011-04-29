@@ -25,5 +25,6 @@
      :web-home "http://winst.fxtlabs.com/"
      :output-path "autodoc"
      :namespaces-to-document ["winst"]
+     :load-classpath ["./src"] ; needed because of bug in autodoc 0.8.0-SNAPSHOT
      :load-except-list [#"/test/" #"project.clj"]})
 
