@@ -63,7 +63,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.core-api.html#winst.core/apply-activity",
+   "http://winst.fxtlabs.com/winst.core-api.html#winst.core/apply-activity",
    :doc
    "Applies a trading activity to a given holdings and returns the updated\nholdings.",
    :var-type "multimethod",
@@ -77,7 +77,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.core-api.html#winst.core/compute-holdings",
+   "http://winst.fxtlabs.com/winst.core-api.html#winst.core/compute-holdings",
    :doc
    "Returns the final state of the holdings after applying the given\nsequence of trading activities.",
    :var-type "function",
@@ -91,7 +91,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.core-api.html#winst.core/compute-holdings-seq",
+   "http://winst.fxtlabs.com/winst.core-api.html#winst.core/compute-holdings-seq",
    :doc
    "Returns a sequence of all the intermediate states of the holdings\nafter applying the given sequence of trading activities. The first\nitem in the result is the state of the holdings immediately prior to\nthe application of any of the given activities.",
    :var-type "function",
@@ -105,7 +105,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.core-api.html#winst.core/compute-realized-gains",
+   "http://winst.fxtlabs.com/winst.core-api.html#winst.core/compute-realized-gains",
    :doc
    "Returns a sequence of the realized gains resulting from the application\nof the given trading activities to the given initial holdings.",
    :var-type "function",
@@ -119,7 +119,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.core-api.html#winst.core/convert-activities",
+   "http://winst.fxtlabs.com/winst.core-api.html#winst.core/convert-activities",
    :doc
    "Converts a sequence of activities using the given exchange rate\nlookup function.",
    :var-type "function",
@@ -133,7 +133,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.core-api.html#winst.core/convert-activity",
+   "http://winst.fxtlabs.com/winst.core-api.html#winst.core/convert-activity",
    :doc
    "Converts an activity using the given exchange rate lookup function.",
    :var-type "function",
@@ -147,7 +147,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.core-api.html#winst.core/dated-before?",
+   "http://winst.fxtlabs.com/winst.core-api.html#winst.core/dated-before?",
    :doc
    "True if the given item dates before the specified time.\nThe item must be a map with a :date key.",
    :var-type "function",
@@ -161,7 +161,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.core-api.html#winst.core/dated-within?",
+   "http://winst.fxtlabs.com/winst.core-api.html#winst.core/dated-within?",
    :doc
    "True if the given item dates within the specified time interval.\nThe item must be a map with a :date key.",
    :var-type "function",
@@ -172,7 +172,7 @@
    :source-url
    "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj#L27",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.core-api.html#winst.core/merge-by-date",
+   "http://winst.fxtlabs.com/winst.core-api.html#winst.core/merge-by-date",
    :namespace "winst.core",
    :line 27,
    :file "winst/core.clj",
@@ -188,7 +188,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.core-api.html#winst.core/sort-by-date",
+   "http://winst.fxtlabs.com/winst.core-api.html#winst.core/sort-by-date",
    :doc
    "Sorts the given items in chronological order.\nThe items must be maps with a :date key.",
    :var-type "function",
@@ -202,7 +202,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/currency.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.currency-api.html#winst.currency/currency-keyword",
+   "http://winst.fxtlabs.com/winst.currency-api.html#winst.currency/currency-keyword",
    :doc "Turns a currency string into a keyword.",
    :var-type "function",
    :line 71,
@@ -215,7 +215,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/currency.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.currency-api.html#winst.currency/currency-name",
+   "http://winst.fxtlabs.com/winst.currency-api.html#winst.currency/currency-name",
    :doc "Turns a currency keyword into an upper-case string.",
    :var-type "function",
    :line 66,
@@ -228,7 +228,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/currency.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.currency-api.html#winst.currency/get-exchange-rate-lookup",
+   "http://winst.fxtlabs.com/winst.currency-api.html#winst.currency/get-exchange-rate-lookup",
    :doc
    "Returns a function that returns the exchange rate at the closing\nof the given time (a org.joda.time.DateTime object) from the first\ncurrency (keyword) to the second currency (keyword).",
    :var-type "function",
@@ -242,7 +242,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/dsl.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.dsl-api.html#winst.dsl/activities",
+   "http://winst.fxtlabs.com/winst.dsl-api.html#winst.dsl/activities",
    :doc
    "Produces a chronologically sorted sequence of account activities using\nthe same shorthand language defined by the 'activity' macro. For example:\n(activities (2008 1 24 buy 80 amzn at 888.0)\n            (2008 4 9 buy 35 intc at 1010.0)\n            (2008 5 22 sell 60 amzn at 700.0))",
    :var-type "macro",
@@ -256,7 +256,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/dsl.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.dsl-api.html#winst.dsl/activity",
+   "http://winst.fxtlabs.com/winst.dsl-api.html#winst.dsl/activity",
    :doc
    "Builds an account activity map for one operation using a shorthand language,\nbest illustrated with an example:\n(activity 2010 3 4 buy 10 aapl at 2000.0)\n(activity 2010 4 5 sell 10 aapl at 4500.0)\n(activity 2010 5 6 exchange 20 goog for 2 msft)\n(activity 2010 4 5 split 30 amzn 2 for 1)\nThe first three integers specify the year, month, and day of the activity;\nthen the name of the activity (buy, sell, exchange or split);\nthen the quantity of the security as a number;\nthen the symbol of the security as a symbol or a string.\nThe rest of the parameters depends on the specific activity and can be\neasily inferred from the example above. Note that the cost/proceeds of\na buy/sell activity is given for the full quantity and not for a single\nshare.",
    :var-type "macro",
@@ -270,7 +270,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/dsl.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.dsl-api.html#winst.dsl/get-security-uid",
+   "http://winst.fxtlabs.com/winst.dsl-api.html#winst.dsl/get-security-uid",
    :doc
    "Returns the security corresponding to the given symbol. If the same\nsymbol is used by more than one market exchange, it will select one\nof them; which one is undetermined.",
    :var-type "function",
@@ -284,7 +284,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/handlers.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.handlers-api.html#winst.handlers/activities-handler",
+   "http://winst.fxtlabs.com/winst.handlers-api.html#winst.handlers/activities-handler",
    :doc
    "Returns a handler capable of responding to activity requests for\nthe given account.",
    :var-type "function",
@@ -298,7 +298,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/handlers.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.handlers-api.html#winst.handlers/gains-handler",
+   "http://winst.fxtlabs.com/winst.handlers-api.html#winst.handlers/gains-handler",
    :doc
    "Returns a handler capable of responding to realized gain/loss requests\nfor the given account.",
    :var-type "function",
@@ -312,7 +312,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/handlers.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.handlers-api.html#winst.handlers/holdings-handler",
+   "http://winst.fxtlabs.com/winst.handlers-api.html#winst.handlers/holdings-handler",
    :doc
    "Returns a handler capable of responding to holdings requests for the\ngiven account.",
    :var-type "function",
@@ -326,7 +326,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/presentation.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.presentation-api.html#winst.presentation/render-activities",
+   "http://winst.fxtlabs.com/winst.presentation-api.html#winst.presentation/render-activities",
    :doc
    "Renders a report showing the trading activity for the given account over\nthe given time interval and in the given reporting currency.",
    :var-type "function",
@@ -340,7 +340,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/presentation.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.presentation-api.html#winst.presentation/render-error",
+   "http://winst.fxtlabs.com/winst.presentation-api.html#winst.presentation/render-error",
    :doc
    "Renders an error page for the given account and error message.",
    :var-type "function",
@@ -354,7 +354,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/presentation.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.presentation-api.html#winst.presentation/render-gains",
+   "http://winst.fxtlabs.com/winst.presentation-api.html#winst.presentation/render-gains",
    :doc
    "Renders a report showing the realized gain/loss for the given account over\nthe given time interval and in the given reporting currency.",
    :var-type "function",
@@ -368,7 +368,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/presentation.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.presentation-api.html#winst.presentation/render-holdings",
+   "http://winst.fxtlabs.com/winst.presentation-api.html#winst.presentation/render-holdings",
    :doc
    "Renders a report showing the holdings for the given account at the given\ntime and in the given reporting currency.",
    :var-type "function",
@@ -382,7 +382,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/presentation.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.presentation-api.html#winst.presentation/render-not-found",
+   "http://winst.fxtlabs.com/winst.presentation-api.html#winst.presentation/render-not-found",
    :doc "Renders a 404 error (not found) page.",
    :var-type "function",
    :line 80,
@@ -395,7 +395,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/f90e2d0409e0fa18650f22bb5b397187c4dc3bff/src/winst/routes.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.routes-api.html#winst.routes/main-routes",
+   "http://winst.fxtlabs.com/winst.routes-api.html#winst.routes/main-routes",
    :doc
    "Returns a handler that can respond to requests related to the given\nsequence of accounts.\nAn account is a map with the following keywords:\n:tag         A keyword corresponding to the name used to identify the\n             account in a URL.\n:name        The name of the account as it should appear on the reports.\n:description A description of the account.\n:holder      The name of the account holder as it should appear on the reports.\n:type        The type of the account (as a keyword). For example, :cash or\n             :margin.\n:currency    The currency used for the account (as a keyword). Currently,\n             only :usd (USD) and :cad (CAD) are supported.\n:activities  The sequence of trading activities for the account. See\n             winst.dsl/activity for details.\nThe URLs this handler responds to must be of the form\n'/accounts/<ACCOUNT>/<ASPECT>/<YEAR>/<MONTH>' where:\n<ACCOUNT>    The short name for the account (see :tag key above).\n<ASPECT>     One of 'holdings', 'activities', or 'gains'.\n<YEAR>       The year for which the report is desired. If omitted, the\n             report will be generated for the current date (since account\n             inception for activities and realized gains). If present,\n             <MONTH> part must also be present.\n<MONTH>      The month (1 to 12) for which the report is desired. If\n             omitted, the report will be for a whole year or for the\n             lifespan of the account (see <YEAR>).\nThe optional query parameter 'currency' can be added to the URL to\nspecify the currency to be used for the report. Possible values are USD\nor CAD.",
    :var-type "function",
@@ -409,7 +409,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.securities-api.html#winst.securities/lookup-security",
+   "http://winst.fxtlabs.com/winst.securities-api.html#winst.securities/lookup-security",
    :doc "Returns the security corresponding to the given unique ID.",
    :var-type "function",
    :line 109,
@@ -422,7 +422,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.securities-api.html#winst.securities/lookup-security-symbol",
+   "http://winst.fxtlabs.com/winst.securities-api.html#winst.securities/lookup-security-symbol",
    :doc
    "Returns the security corresponding to the given symbol. If an exchange\nkeyword is provided, it limits the search to that market exchange;\notherwise, it will search all available exchanges.",
    :var-type "function",
@@ -433,7 +433,7 @@
    :source-url
    "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj#L103",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.securities-api.html#winst.securities/securities-by-uid",
+   "http://winst.fxtlabs.com/winst.securities-api.html#winst.securities/securities-by-uid",
    :namespace "winst.securities",
    :line 103,
    :file "/Users/fxt/Projects/winst/./src/winst/securities.clj",
@@ -448,7 +448,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.securities-api.html#winst.securities/security-qualified-symbol",
+   "http://winst.fxtlabs.com/winst.securities-api.html#winst.securities/security-qualified-symbol",
    :doc
    "Returns the qualified symbol for the given security as a string\nformatted as EXCHANGE:SYMBOL (e.g. NASDAQ:AAPL).",
    :var-type "function",
@@ -459,7 +459,7 @@
    :source-url
    "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj#L100",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.securities-api.html#winst.securities/security-uid",
+   "http://winst.fxtlabs.com/winst.securities-api.html#winst.securities/security-uid",
    :namespace "winst.securities",
    :line 100,
    :file "/Users/fxt/Projects/winst/./src/winst/securities.clj",
@@ -474,7 +474,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.utils-api.html#winst.utils/activity-type-name",
+   "http://winst.fxtlabs.com/winst.utils-api.html#winst.utils/activity-type-name",
    :doc
    "Returns the string corresponding to a trading activity type\n(e.g. :buy -> BUY).",
    :var-type "function",
@@ -488,7 +488,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.utils-api.html#winst.utils/format-currency",
+   "http://winst.fxtlabs.com/winst.utils-api.html#winst.utils/format-currency",
    :doc "Formats currency using parenthesis for negative values.",
    :var-type "function",
    :line 21,
@@ -501,7 +501,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.utils-api.html#winst.utils/format-date",
+   "http://winst.fxtlabs.com/winst.utils-api.html#winst.utils/format-date",
    :doc "Formats a date as yyyy-mm-dd.",
    :var-type "function",
    :line 11,
@@ -514,7 +514,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.utils-api.html#winst.utils/format-percentage",
+   "http://winst.fxtlabs.com/winst.utils-api.html#winst.utils/format-percentage",
    :doc
    "Formats percentages (given as a fraction) using parenthesis for\nnegative values.",
    :var-type "function",
@@ -528,7 +528,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.utils-api.html#winst.utils/format-quantity",
+   "http://winst.fxtlabs.com/winst.utils-api.html#winst.utils/format-quantity",
    :doc "Formats a quantity using parenthesis for negative values.",
    :var-type "function",
    :line 16,
@@ -542,7 +542,7 @@
    :raw-source-url
    "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
    :wiki-url
-   "http://winst.fxtlabs.com//winst.utils-api.html#winst.utils/normalize-activity",
+   "http://winst.fxtlabs.com/winst.utils-api.html#winst.utils/normalize-activity",
    :doc
    "Normalizes an activity so that it can be described in terms of securities\nadded or subtracted from the holdings. A buy or sell activity\nwill be represented by one entry each, but an exchange will generate two\nentries. It returns a vector of one or two entries.",
    :var-type "function",
