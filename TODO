@@ -20,6 +20,7 @@ TODO
 * Automatically discover and load exchange rate data files
 * Use clojure.contrib.probability for random activity generator
 * Make it possible to overwrite style.css
+* Consider using enlive-html to support custom HTML templates for all reports
 
 
 NOTES

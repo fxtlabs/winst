@@ -6,8 +6,7 @@
   (:use [clojure.java.io :only (reader resource)]
         [clojure.contrib.def :only (defvar-)]
         [clojure.contrib.string :only (lower-case upper-case)]
-        [clj-time.core :only (date-time year month day before?)]
-        clojure.test))
+        [clj-time.core :only (date-time year month day before?)]))
 
 (defvar- currency-pairs
   [[:usd :cad]]
@@ -107,29 +106,3 @@
       [to from] :>> #(-> (build-exchange-rate-lookup to from %) reciprocal-lookup)
       nil)))
 
-;; C-c , to run the tests
-;; C-c ' to see the error details (you must be on the line of the test)
-;; C-c k to clear the errors
-
-(deftest test-currency-name
-  (is (= "USD" (currency-name :usd)))
-  (is (= "USD" (currency-name :USD))))
-
-(deftest test-build-rate-lookup
-  (let [usd-cad-rates (get currencies-rates-map [:usd :cad])]
-    (is (< 1.4 ((build-exchange-rate-lookup :usd :cad usd-cad-rates)
-                (date-time 2000 1 4 8))))))
-
-(deftest test-reciprocal-lookup
-  (let [usd-cad-rates (get currencies-rates-map [:usd :cad])
-        lookup-rate (build-exchange-rate-lookup :usd :cad usd-cad-rates)
-        dt (date-time 2000 1 4)]
-    (is (< 1.4 (lookup-rate dt)))
-    (is (> (/ 1.0 1.4) ((reciprocal-lookup lookup-rate) dt)))))
-
-(deftest test-get-exchange-rate-lookup
-  (let [dt (date-time 2000 1 4)]
-    (let [lookup-rate (get-exchange-rate-lookup :usd :cad)]
-      (is (< 1.4 (lookup-rate dt))))
-    (let [lookup-rate (get-exchange-rate-lookup :cad :usd)]
-      (is (> (/ 1.0 1.4) (lookup-rate dt))))))
