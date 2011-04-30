@@ -39,7 +39,9 @@
           :buy (merge-with * activity {:cost rate})
           :sell (merge-with * activity {:proceeds rate})
           (:exchange :split) activity
-          (throw (RuntimeException. (str "Activity type " (-> activity :type :name) " does not exist!"))))))
+          (throw (RuntimeException.
+                  (str "Unknown activity type " (-> activity :type :name) "\n"
+                       activity))))))
 
 (defn convert-activities
   "Converts a sequence of activities using the given exchange rate
@@ -54,7 +56,7 @@
    of the quantity just subtracted. The latter value is used to implement
    security exchanges as a sequence of a subtraction and an addition to
    the holdings."
-  [holdings {:keys [security-uid quantity]}]
+  [holdings {:keys [security-uid quantity] :as activity}]
   (if-let [holding (get holdings security-uid)]
     (cond (< quantity (:quantity holding))
           (let [new-holding
@@ -68,9 +70,13 @@
           [(dissoc holdings security-uid) (:cost holding)]
 
           :else
-          (throw (RuntimeException. "cannot sell more that is there!")))
+          (throw (RuntimeException.
+                  (str "SELL/EXCHANGE: Attempt to sell more that available ("
+                       quantity " vs. " (:quantity holding) ")\n"
+                       activity))))
     (throw (RuntimeException.
-            (str "Cannot find " security-uid " in holdings.")))))
+            (str "SELL/EXCHANGE: Cannot find " security-uid " in holdings\n"
+                 activity)))))
 
 (defn- add-to-holdings
   "Adds some quantity of the given security to the given holdings
@@ -105,8 +111,12 @@
       (if (= quantity (:quantity holding))
         (assoc holdings security-uid
                (assoc holding :quantity (* split-ratio quantity)))
-        (throw (Throwable. "quantity must match!")))
-      (throw (Throwable. "cannot find holding to split!")))))
+        (throw (RuntimeException.
+                (str "SPLIT: Quantities do not match ("
+                     quantity " vs. " (:quantity holding) ")\n" activity))))
+      (throw (RuntimeException.
+              (str "SPLIT: Cannot find " security-uid " in holdings\n"
+                   activity))))))
 
 (defmethod apply-activity :exchange [holdings activity]
   (let [[new-holdings cost] (subtract-from-holdings holdings activity)]
@@ -140,7 +150,9 @@
      :date (:date activity),
      :cost (* (:cost holding) (/ (:quantity activity) (:quantity holding))),
      :proceeds (:proceeds activity)}
-    (throw (Throwable. "cannot find matching holding for capital gain!"))))
+    (throw (RuntimeException.
+            (str "GAIN/LOSS: Cannot find " (:security-uid activity)
+                 " in holdings\n" activity)))))
 
 (defn compute-realized-gains
   "Returns a sequence of the realized gains resulting from the application

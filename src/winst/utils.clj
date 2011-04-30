@@ -87,5 +87,6 @@
                                           "; exchanged for "
                                           (format-quantity quantity)
                                           " " (:name security))}])
-          (throw (RuntimeException. "Unexpected activity type!")))))
+          (throw (RuntimeException.
+                  (str "Unknown activity type " (name type) "\n" activity))))))
 

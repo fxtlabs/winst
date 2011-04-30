@@ -8,7 +8,8 @@
         [clojure.contrib.string :only (lower-case upper-case)]
         [clojure.contrib.def :only (defvar defvar-)]
         [clj-time.core :only (date-time)]
-        [clojure-csv.core :only (parse-csv)]))
+        [clojure-csv.core :only (parse-csv)])
+  (:import [java.util MissingResourceException]))
 
 (defvar- exchanges
   [:nasdaq :nyse :amex]
@@ -53,9 +54,13 @@
    The resource name is equal to '<exchange>_companies.csv' where
    <exchange> is the lower-case name corresponding to the given keyword."
   [exchange]
-  (let [res (resource (str (lower-case (name exchange)) "_companies.csv"))]
-    (->> res slurp parse-csv (drop 1) (filter valid-record?)
-         (map (partial convert-record exchange)))))
+  (let [fname (str (lower-case (name exchange)) "_companies.csv")
+        res (resource fname)]
+    (if res
+      (->> res slurp parse-csv (drop 1) (filter valid-record?)
+           (map (partial convert-record exchange)))
+      (throw (MissingResourceException.
+              (str "Cannot find resource file '" fname "'.") "" "")))))
 
 (defn- create-map-by-exchange
   "Creates a hash map that maps each of the exchange keywords to a value

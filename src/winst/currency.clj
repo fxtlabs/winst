@@ -6,7 +6,8 @@
   (:use [clojure.java.io :only (reader resource)]
         [clojure.contrib.def :only (defvar-)]
         [clojure.contrib.string :only (lower-case upper-case)]
-        [clj-time.core :only (date-time year month day before?)]))
+        [clj-time.core :only (date-time year month day before?)])
+  (:import [java.util MissingResourceException]))
 
 (defvar- currency-pairs
   [[:usd :cad]]
@@ -52,7 +53,12 @@
 (defn- resource-for
   "Returns the name of the resource corresponding to a given currency pair."
   [[from to]]
-  (resource (str (name from) "_" (name to) "_rates.csv")))
+  (let [fname (str (name from) "_" (name to) "_rates.csv")
+        res (resource fname)]
+    (if res
+      res
+      (throw (MissingResourceException.
+              (str "Cannot find resource file '" fname "'.") "" "")))))
 
 (defvar- currencies-rates-map
   (apply hash-map
@@ -84,9 +90,9 @@
   (fn [dt]
     (if-let [lte-part (rsubseq m <= dt)]
       (val (first lte-part))
-      (throw (RuntimeException. (str "No " (currency-name from) " to "
-                                     (currency-name to)
-                                     " exchange rate for " dt))))))
+      (throw (RuntimeException.
+              (str "No " (currency-name from) " to "
+                   (currency-name to) " exchange rate for " dt))))))
 
 (defn- reciprocal-lookup
   "Returns a function that always returns the reciprocal of the given function.

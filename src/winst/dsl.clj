@@ -57,7 +57,8 @@
                    :exchange (let [[_ new-quantity new-ticker] rest]
                                {:new-quantity new-quantity,
                                 :new-security-uid `(get-security-uid ~(to-string new-ticker))})
-                   (throw (Error. (str "Activity type " action " does not exist!")))))))
+                   (throw (Error.
+                           (str "Unknown activity type " (name action))))))))
 
 (defmacro activities
   "Produces a chronologically sorted sequence of account activities using
