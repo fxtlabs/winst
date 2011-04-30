@@ -1,20 +1,20 @@
 {:namespaces
  ({:source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj",
    :wiki-url "http://winst.fxtlabs.com/winst.core-api.html",
    :name "winst.core",
    :author "Filippo Tampieri <fxt@fxtlabs.com>",
    :doc
    "The engine that processes trading activities to compute resulting\nholdings and realized gains/losses."}
   {:source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/currency.clj",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/currency.clj",
    :wiki-url "http://winst.fxtlabs.com/winst.currency-api.html",
    :name "winst.currency",
    :author "Filippo Tampieri <fxt@fxtlabs.com>",
    :doc
    "Services for working with different currencies, including parsing\nexchange rate CSV files and finding out the exchange rate for a\ngiven day."}
   {:source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/dsl.clj",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/dsl.clj",
    :wiki-url "http://winst.fxtlabs.com/winst.dsl-api.html",
    :name "winst.dsl",
    :author "Filippo Tampieri <fxt@fxtlabs.com>",
@@ -42,14 +42,14 @@
    :doc
    "Maps URLs to request handlers to report trading activity, holdings,\nand realized gains/losses for an account over a specified period of time."}
   {:source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/securities.clj",
    :wiki-url "http://winst.fxtlabs.com/winst.securities-api.html",
    :name "winst.securities",
    :author "Filippo Tampieri <fxt@fxtlabs.com>",
    :doc
    "Services for working with securities. It manages a list of all the\ncompanies listed on the NASDAQ, NYSE, and AMEX exchanges. The official\nlists are available for download as CSV files from the NASDAQ web site\nat http://www.nasdaq.com/screening/company-list.aspx"}
   {:source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj",
    :wiki-url "http://winst.fxtlabs.com/winst.utils-api.html",
    :name "winst.utils",
    :author "Filippo Tampieri <fxt@fxtlabs.com>",
@@ -59,79 +59,79 @@
    :name "apply-activity",
    :namespace "winst.core",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj#L90",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj#L96",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.core-api.html#winst.core/apply-activity",
    :doc
    "Applies a trading activity to a given holdings and returns the updated\nholdings.",
    :var-type "multimethod",
-   :line 90,
+   :line 96,
    :file "/Users/fxt/Projects/winst/./src/winst/core.clj"}
   {:arglists ([as] [initial-holdings as]),
    :name "compute-holdings",
    :namespace "winst.core",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj#L118",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj#L128",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.core-api.html#winst.core/compute-holdings",
    :doc
    "Returns the final state of the holdings after applying the given\nsequence of trading activities.",
    :var-type "function",
-   :line 118,
+   :line 128,
    :file "winst/core.clj"}
   {:arglists ([as] [initial-holdings as]),
    :name "compute-holdings-seq",
    :namespace "winst.core",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj#L124",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj#L134",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.core-api.html#winst.core/compute-holdings-seq",
    :doc
    "Returns a sequence of all the intermediate states of the holdings\nafter applying the given sequence of trading activities. The first\nitem in the result is the state of the holdings immediately prior to\nthe application of any of the given activities.",
    :var-type "function",
-   :line 124,
+   :line 134,
    :file "winst/core.clj"}
   {:arglists ([as] [initial-holdings as]),
    :name "compute-realized-gains",
    :namespace "winst.core",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj#L145",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj#L157",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.core-api.html#winst.core/compute-realized-gains",
    :doc
    "Returns a sequence of the realized gains resulting from the application\nof the given trading activities to the given initial holdings.",
    :var-type "function",
-   :line 145,
+   :line 157,
    :file "winst/core.clj"}
   {:arglists ([exchange-rate-lookup activities]),
    :name "convert-activities",
    :namespace "winst.core",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj#L44",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj#L46",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.core-api.html#winst.core/convert-activities",
    :doc
    "Converts a sequence of activities using the given exchange rate\nlookup function.",
    :var-type "function",
-   :line 44,
+   :line 46,
    :file "winst/core.clj"}
   {:arglists ([exchange-rate-lookup activity]),
    :name "convert-activity",
    :namespace "winst.core",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj#L34",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj#L34",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.core-api.html#winst.core/convert-activity",
    :doc
@@ -143,9 +143,9 @@
    :name "dated-before?",
    :namespace "winst.core",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj#L9",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj#L9",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.core-api.html#winst.core/dated-before?",
    :doc
@@ -157,9 +157,9 @@
    :name "dated-within?",
    :namespace "winst.core",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj#L15",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj#L15",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.core-api.html#winst.core/dated-within?",
    :doc
@@ -168,9 +168,9 @@
    :line 15,
    :file "winst/core.clj"}
   {:raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj#L27",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj#L27",
    :wiki-url
    "http://winst.fxtlabs.com/winst.core-api.html#winst.core/merge-by-date",
    :namespace "winst.core",
@@ -184,9 +184,9 @@
    :name "sort-by-date",
    :namespace "winst.core",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj#L21",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj#L21",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/core.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/core.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.core-api.html#winst.core/sort-by-date",
    :doc
@@ -198,63 +198,63 @@
    :name "currency-keyword",
    :namespace "winst.currency",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/currency.clj#L71",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/currency.clj#L76",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/currency.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/currency.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.currency-api.html#winst.currency/currency-keyword",
    :doc "Turns a currency string into a keyword.",
    :var-type "function",
-   :line 71,
+   :line 76,
    :file "winst/currency.clj"}
   {:arglists ([k]),
    :name "currency-name",
    :namespace "winst.currency",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/currency.clj#L66",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/currency.clj#L71",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/currency.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/currency.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.currency-api.html#winst.currency/currency-name",
    :doc "Turns a currency keyword into an upper-case string.",
    :var-type "function",
-   :line 66,
+   :line 71,
    :file "winst/currency.clj"}
   {:arglists ([from to]),
    :name "get-exchange-rate-lookup",
    :namespace "winst.currency",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/currency.clj#L98",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/currency.clj#L103",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/currency.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/currency.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.currency-api.html#winst.currency/get-exchange-rate-lookup",
    :doc
    "Returns a function that returns the exchange rate at the closing\nof the given time (a org.joda.time.DateTime object) from the first\ncurrency (keyword) to the second currency (keyword).",
    :var-type "function",
-   :line 98,
+   :line 103,
    :file "winst/currency.clj"}
   {:arglists ([& as]),
    :name "activities",
    :namespace "winst.dsl",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/dsl.clj#L62",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/dsl.clj#L63",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/dsl.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/dsl.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.dsl-api.html#winst.dsl/activities",
    :doc
    "Produces a chronologically sorted sequence of account activities using\nthe same shorthand language defined by the 'activity' macro. For example:\n(activities (2008 1 24 buy 80 amzn at 888.0)\n            (2008 4 9 buy 35 intc at 1010.0)\n            (2008 5 22 sell 60 amzn at 700.0))",
    :var-type "macro",
-   :line 62,
+   :line 63,
    :file "/Users/fxt/Projects/winst/./src/winst/dsl.clj"}
   {:arglists ([year month day action quantity ticker & rest]),
    :name "activity",
    :namespace "winst.dsl",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/dsl.clj#L29",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/dsl.clj#L29",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/dsl.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/dsl.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.dsl-api.html#winst.dsl/activity",
    :doc
@@ -266,9 +266,9 @@
    :name "get-security-uid",
    :namespace "winst.dsl",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/dsl.clj#L20",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/dsl.clj#L20",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/dsl.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/dsl.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.dsl-api.html#winst.dsl/get-security-uid",
    :doc
@@ -405,37 +405,37 @@
    :name "lookup-security",
    :namespace "winst.securities",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj#L109",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/securities.clj#L114",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/securities.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.securities-api.html#winst.securities/lookup-security",
    :doc "Returns the security corresponding to the given unique ID.",
    :var-type "function",
-   :line 109,
+   :line 114,
    :file "/Users/fxt/Projects/winst/./src/winst/securities.clj"}
   {:arglists ([exchange sym] [sym]),
    :name "lookup-security-symbol",
    :namespace "winst.securities",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj#L85",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/securities.clj#L90",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/securities.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.securities-api.html#winst.securities/lookup-security-symbol",
    :doc
    "Returns the security corresponding to the given symbol. If an exchange\nkeyword is provided, it limits the search to that market exchange;\notherwise, it will search all available exchanges.",
    :var-type "function",
-   :line 85,
+   :line 90,
    :file "/Users/fxt/Projects/winst/./src/winst/securities.clj"}
   {:raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/securities.clj",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj#L103",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/securities.clj#L108",
    :wiki-url
    "http://winst.fxtlabs.com/winst.securities-api.html#winst.securities/securities-by-uid",
    :namespace "winst.securities",
-   :line 103,
+   :line 108,
    :file "/Users/fxt/Projects/winst/./src/winst/securities.clj",
    :var-type "var",
    :doc "A hash map that maps unique IDs to securities.",
@@ -444,24 +444,24 @@
    :name "security-qualified-symbol",
    :namespace "winst.securities",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj#L17",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/securities.clj#L18",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/securities.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.securities-api.html#winst.securities/security-qualified-symbol",
    :doc
    "Returns the qualified symbol for the given security as a string\nformatted as EXCHANGE:SYMBOL (e.g. NASDAQ:AAPL).",
    :var-type "function",
-   :line 17,
+   :line 18,
    :file "/Users/fxt/Projects/winst/./src/winst/securities.clj"}
   {:raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/securities.clj",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/securities.clj#L100",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/securities.clj#L105",
    :wiki-url
    "http://winst.fxtlabs.com/winst.securities-api.html#winst.securities/security-uid",
    :namespace "winst.securities",
-   :line 100,
+   :line 105,
    :file "/Users/fxt/Projects/winst/./src/winst/securities.clj",
    :var-type "var",
    :doc "Returns a unique ID for the given security.",
@@ -470,9 +470,9 @@
    :name "activity-type-name",
    :namespace "winst.utils",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj#L32",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj#L32",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.utils-api.html#winst.utils/activity-type-name",
    :doc
@@ -484,9 +484,9 @@
    :name "format-currency",
    :namespace "winst.utils",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj#L21",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj#L21",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.utils-api.html#winst.utils/format-currency",
    :doc "Formats currency using parenthesis for negative values.",
@@ -497,9 +497,9 @@
    :name "format-date",
    :namespace "winst.utils",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj#L11",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj#L11",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.utils-api.html#winst.utils/format-date",
    :doc "Formats a date as yyyy-mm-dd.",
@@ -510,9 +510,9 @@
    :name "format-percentage",
    :namespace "winst.utils",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj#L26",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj#L26",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.utils-api.html#winst.utils/format-percentage",
    :doc
@@ -524,9 +524,9 @@
    :name "format-quantity",
    :namespace "winst.utils",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj#L16",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj#L16",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.utils-api.html#winst.utils/format-quantity",
    :doc "Formats a quantity using parenthesis for negative values.",
@@ -538,9 +538,9 @@
    :name "normalize-activity",
    :namespace "winst.utils",
    :source-url
-   "https://github.com/fxtlabs/winst/blob/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj#L38",
+   "https://github.com/fxtlabs/winst/blob/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj#L38",
    :raw-source-url
-   "https://github.com/fxtlabs/winst/raw/c0e74fb09e43d0c304f7cb739f17d46ddf971fc8/src/winst/utils.clj",
+   "https://github.com/fxtlabs/winst/raw/c74551cc7453e617fcbe535881b4569506244a30/src/winst/utils.clj",
    :wiki-url
    "http://winst.fxtlabs.com/winst.utils-api.html#winst.utils/normalize-activity",
    :doc
