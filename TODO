@@ -6,11 +6,18 @@ TODO
 * Add tests
 * Add sanity checks on activity list
 * Write README file
-* More CSS
 * Sell/Buy 'at' or 'for' ('at' may imply the amount given is 'per share')
 * Add navigation
-* Tag repo
+* More CSS
+* Should I create/maintain an hg branch (git) to keep the hg repo up
+  to date?
 * Release 1.0
+  
+  - Update version in project.clj
+  - Upload to clojars
+  - Tag repo
+  - Update/upload docs
+  - Should I create a 1.0.X branch for bug fixes?
 
 * Automatically download exchange rates so they cover the period up to now
 * Add account groups for collated reporting

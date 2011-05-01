@@ -29,12 +29,12 @@
 (defn- account-info
   "Returns the <div> element containing the info for the given account."
   [account]
-  [:div {:class "account-info"}
+  [:div.account-info
    [:span (str (:name account) " - "
                (name (:type account)) " - "
                (currency-name (:currency account)))]
    [:br]
-   [:span {:class "account-holder"} (:holder account)]])
+   [:span.account-holder (:holder account)]])
 
 (defn- page-header
   "Returns the <header> element used by all pages."
@@ -52,7 +52,7 @@
    function corresponding to the :content key in the given slots map."
   [{:keys [content] :as slots}]
   [:body
-   [:div {:id "main" :class "container"}
+   [:div#main.container
     (page-header slots)
     (content slots)]
    (page-footer slots)])
@@ -69,7 +69,7 @@
    paragraph)."
   [tag title blurb]
   (letfn [(content [{:keys [blurb]}]
-                   [:div {:id "content"}
+                   [:div#content
                     [:p blurb]])]
     (render-page-template {:tag tag
                            :content content
@@ -93,7 +93,7 @@
   "Returns the <div> element containing the info for the required report
    (e.g. date printed and reporting currency)."
   [currency]
-  [:div {:class "report-info"}
+  [:div.report-info
    [:span (str "Reporting currency: " (currency-name currency))]
    [:br]
    [:span (str "Printed " (format-date (now)))]])
@@ -102,7 +102,7 @@
   "Renders a report page with the given pieces."
   [tag title account report-currency caption table]
   (letfn [(render-content [_]
-                          [:div {:class "content"}
+                          [:div.content
                            (account-info account)
                            [:br]
                            (report-info report-currency)
@@ -122,23 +122,23 @@
                      (format-date (minus report-time (millis 1))))
         table [:table
                [:tr
-                [:th {:class "number"} "Quantity"]
+                [:th.number "Quantity"]
                 [:th "Symbol"]
                 [:th "Description"]
-                [:th {:class "number"} "Book Value"]]
+                [:th.number "Book Value"]]
                (for [[security-uid holding] holdings]
                  (let [{:keys [quantity cost]} holding
                        security (lookup-security security-uid)]
                    [:tr
-                    [:td {:class "number"} (format-quantity quantity)]
+                    [:td.number (format-quantity quantity)]
                     [:td (security-qualified-symbol security)]
                     [:td (:name security)]
-                    [:td {:class "number"} (format-currency cost)]]))
+                    [:td.number (format-currency cost)]]))
                [:tr
                 [:th ""]
                 [:th ""]
                 [:th ""]
-                [:th {:class "number"}
+                [:th.number
                  (format-currency (reduce #(+ %1 (:cost %2)) 0 (vals holdings)))]]]]
     (render-report tag title account report-currency caption table)))
 
@@ -155,32 +155,32 @@
                                          (millis 1))))
         table [:table
                [:tr
-                [:th {:class "date"} "Transaction Date"]
-                [:th {:class "activity"} "Transaction Type"]
+                [:th.date "Transaction Date"]
+                [:th.activity "Transaction Type"]
                 [:th "Symbol"]
                 [:th "Description"]
-                [:th {:class "number"} "Quantity"]
-                [:th {:class "number"} "Average Cost"]
-                [:th {:class "number"} "Book Value"]
-                [:th {:class "number"} "Transaction Price"]
-                [:th {:class "number"} "Net Amount"]
-                [:th {:class "number"} "Realized Gain/Loss"]
-                [:th {:class "number"} "Percentage Gain/Loss"]]
+                [:th.number "Quantity"]
+                [:th.number "Average Cost"]
+                [:th.number "Book Value"]
+                [:th.number "Transaction Price"]
+                [:th.number "Net Amount"]
+                [:th.number "Realized Gain/Loss"]
+                [:th.number "Percentage Gain/Loss"]]
                (for [gain gains]
                  (let [{:keys [date security-uid quantity cost proceeds]} gain
                        security (lookup-security security-uid)]
                    [:tr
-                    [:td {:class "date"} (format-date date)]
-                    [:td {:class "activity"} "SELL"]
+                    [:td.date (format-date date)]
+                    [:td.activity "SELL"]
                     [:td (security-qualified-symbol security)]
                     [:td (:name security)]
-                    [:td {:class "number"} (format-quantity (- quantity))]
-                    [:td {:class "number"} (format-currency (/ cost quantity))]
-                    [:td {:class "number"} (format-currency cost)]
-                    [:td {:class "number"} (format-currency (/ proceeds quantity))]
-                    [:td {:class "number"} (format-currency proceeds)]
-                    [:td {:class "number"} (format-currency (- proceeds cost))]
-                    [:td {:class "number"} (format-percentage (/ (- proceeds cost) cost))]]))
+                    [:td.number (format-quantity (- quantity))]
+                    [:td.number (format-currency (/ cost quantity))]
+                    [:td.number (format-currency cost)]
+                    [:td.number (format-currency (/ proceeds quantity))]
+                    [:td.number (format-currency proceeds)]
+                    [:td.number (format-currency (- proceeds cost))]
+                    [:td.number (format-percentage (/ (- proceeds cost) cost))]]))
                [:tr
                 [:th ""]
                 [:th ""]
@@ -188,12 +188,12 @@
                 [:th "Total"]
                 [:th ""]
                 [:th ""]
-                [:th {:class "number"}
+                [:th.number
                  (format-currency (reduce #(+ %1 (:cost %2)) 0 gains))]
                 [:th ""]
-                [:th {:class "number"}
+                [:th.number
                  (format-currency (reduce #(+ %1 (:proceeds %2)) 0 gains))]
-                [:th {:class "number"}
+                [:th.number
                  (format-currency (reduce #(+ %1 (- (:proceeds %2) (:cost %2))) 0 gains))]
                 [:th ""]]]]
     (render-report tag title account report-currency caption table)))
@@ -211,26 +211,26 @@
                                          (millis 1))))
         table [:table
                [:tr
-                [:th {:class "date"} "Date"]
-                [:th {:class "activity"} "Activity"]
-                [:th {:class "number"} "Quantity"]
+                [:th.date "Date"]
+                [:th.activity "Activity"]
+                [:th.number "Quantity"]
                 [:th "Symbol"]
                 [:th "Security Description"]
-                [:th {:class "number"} "Price"]
-                [:th {:class "number"} "Credit/(Debit)"]
+                [:th.number "Price"]
+                [:th.number "Credit/(Debit)"]
                 ]
                (for [item (mapcat normalize-activity activities)]
                  (let [{:keys [date type quantity security-uid
                                description price credit]} item
                        security (lookup-security security-uid)]
                    [:tr
-                    [:td {:class "date"} (format-date date)]
-                    [:td {:class "activity"} (activity-type-name type)]
-                    [:td {:class "number"} (format-quantity quantity)]
+                    [:td.date (format-date date)]
+                    [:td.activity (activity-type-name type)]
+                    [:td.number (format-quantity quantity)]
                     [:td (security-qualified-symbol security)]
                     [:td description]
-                    [:td {:class "number"} (if price (format-currency price) "")]
-                    [:td {:class "number"} (if credit (format-currency credit) "")]]))
+                    [:td.number (if price (format-currency price) "")]
+                    [:td.number (if credit (format-currency credit) "")]]))
                ]]
     (render-report tag title account report-currency caption table)))
 
