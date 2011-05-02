@@ -5,7 +5,7 @@
         [winst.dsl :only (activities)]))
 
 (defvar- activity-list
-  (activities (2008 1 24 buy 80 amzn at 888.0)
+  (activities (2008 2 24 buy 80 amzn at 888.0)
               (2008 4 9 buy 35 intc at 1010.0)
               (2008 5 22 sell 60 amzn at 700.0)
               (2009 10 22 buy 50 ko at 6000.0)

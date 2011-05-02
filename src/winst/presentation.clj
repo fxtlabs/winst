@@ -4,16 +4,24 @@
    account over a specified period of time."
   {:author "Filippo Tampieri <fxt@fxtlabs.com>"}
   (:use [clojure.contrib.def :only (defvar-)]
-        [clojure.contrib.string :only (upper-case)]
         hiccup.core
         hiccup.page-helpers
-        [clj-time.core :only (now minus millis start end)]
-        [winst.currency :only (currency-name)]
+        [clj-time.core :only (now minus millis start end year month)]
+        [winst.currency :only (currency-name currency-keyword)]
         [winst.securities :only (security-qualified-symbol lookup-security)]
         [winst.utils :only
          (normalize-activity
           activity-type-name
           format-date format-quantity format-currency format-percentage)]))
+
+(defn- account-inception
+  "Returns the date of inception of a given account. It assumes the account
+   activities are sorted chronologically and returns the date of the first
+   (or today's date if there are no activities)."
+  [account]
+  (if-let [first-activity (first (:activities account))]
+    (:date first-activity)
+    (now)))
 
 (defn- page-head
   "Returns the <head> element used by all pages."
@@ -25,16 +33,6 @@
    ;(include-js "http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js")
    
    head])
-
-(defn- account-info
-  "Returns the <div> element containing the info for the given account."
-  [account]
-  [:div.account-info
-   [:span (str (:name account) " - "
-               (name (:type account)) " - "
-               (currency-name (:currency account)))]
-   [:br]
-   [:span.account-holder (:holder account)]])
 
 (defn- page-header
   "Returns the <header> element used by all pages."
@@ -89,6 +87,101 @@
   [_ msg]
   (render-simple-page :error "Error" msg))
 
+
+(defn- report-header
+  "Returns the <header> element used by all report pages."
+  [{url-builder :url-builder,
+    current-report-type :report, current-currency :currency}]
+  [:header
+   [:h1 "Winst"]
+   [:div.reports
+    [:ul
+     (for [[report-type report-name] [[:holdings "Holdings"]
+                                      [:activities "Activity"]
+                                      [:gains "Gain/Loss"]]]
+       (if (= report-type current-report-type)
+         [:li.selected report-name]
+         [:li (link-to (url-builder {:report report-type}) report-name)]))]]
+   [:div.currencies
+    [:ul
+     (let [current-currency (if (nil? current-currency)
+                              current-currency
+                              (currency-keyword current-currency))]
+       (for [[currency label] [[nil "Account"]
+                               [:usd "USD"]
+                               [:cad "CAD"]]]
+         (if (= currency current-currency)
+           [:li.selected label]
+           [:li (link-to (url-builder {:currency currency}) label)])))]]])
+
+(defn- report-accounts
+  "Returns the <div> element used to navigate among the available accounts
+   for the current report type, reporting period and currency."
+  [{url-builder :url-builder, current-account :account, accounts :accounts}]
+  [:div.accounts
+   [:ul
+    [:li.header "Accounts"]
+    (for [[_ account] accounts]
+      (if (= (:tag account) (:tag current-account))
+        [:li.selected (:name account)]
+        [:li (link-to (url-builder {:account (:tag account)})
+                      (:name account))]))]])
+
+(defn- format-month
+  "Returns the given month as a two-digit string."
+  [month]
+  (format "%02d" month))
+
+(defn- report-year
+  "Returns the elements used to navigate to the reports for the given
+   year or available months within that year for the current account,
+   report type, and currency."
+  [{url-builder :url-builder, account :account,
+    current-year :year, current-month :month} yr]
+  (let [inception (account-inception account)
+        today (now)
+        start-month (if (= yr (year inception)) (month inception) 1)
+        end-month (if (= yr (year today)) (month today) 12)]
+    (list
+     (if (and (= yr current-year) (nil? current-month))
+       [:li.selected yr]
+       [:li (link-to (url-builder {:year yr}) yr)])
+     [:li.months
+      [:ul
+       (for [month (range start-month (inc end-month))]
+         (if (and (= yr current-year) (= month current-month))
+           [:li.selected (format-month month)]
+           [:li (link-to (url-builder {:year yr, :month month})
+                         (format-month month))]))]])))
+
+(defn- report-periods
+  "Returns the <div> element used to navigate to the reports for all
+   available periods for the current account, report type, and currency."
+  [{url-builder :url-builder, account :account,
+    current-report :report, current-year :year, current-month :month,
+    :as navigation}]
+  [:div.periods
+   [:ul
+    [:li.header "Reporting Periods"]
+    (let [label (if (= current-report :holdings)
+                  "Current day"
+                  "Inception - Current day")]
+      (if (or current-year current-month)
+        [:li (link-to (url-builder {:year nil, :month nil}) label)]
+        [:li.selected label]))
+    (for [y (range (year (account-inception account)) (inc (year (now))))]
+      (report-year navigation y))]])
+
+(defn- account-info
+  "Returns the <div> element containing the info for the given account."
+  [account]
+  [:div.account-info
+   [:span (str (:name account) " - "
+               (name (:type account)) " - "
+               (currency-name (:currency account)))]
+   [:br]
+   [:span.account-holder (:holder account)]])
+
 (defn- report-info
   "Returns the <div> element containing the info for the required report
    (e.g. date printed and reporting currency)."
@@ -98,26 +191,37 @@
    [:br]
    [:span (str "Printed " (format-date (now)))]])
 
+(defn- report-content
+  "Returns the bare report exclusive of header, footer, and
+   navigation elements."
+  [title account report-currency caption table]
+  [:div#content
+   [:h1 title]
+   (account-info account)
+   [:br]
+   (report-info report-currency)
+   [:h2 caption]
+   table])
+
 (defn- render-report
   "Renders a report page with the given pieces."
-  [tag title account report-currency caption table]
-  (letfn [(render-content [_]
-                          [:div.content
-                           (account-info account)
-                           [:br]
-                           (report-info report-currency)
-                           [:h2 caption]
-                           table])]
-    (render-page-template {:tag tag
-                           :content render-content
-                           :title title})))
+  [navigation title account report-currency caption table]
+  (html5
+   (page-head {:title (str "Winst - " title)})
+   [:body
+    [:div#main.container
+     (report-header navigation)
+     [:div#sidebar
+      (report-accounts navigation)
+      (report-periods navigation)]
+     (report-content title account report-currency caption table)]
+    (page-footer nil)]))
 
 (defn render-holdings
   "Renders a report showing the holdings for the given account at the given
    time and in the given reporting currency."
-  [account report-currency report-time holdings]
-  (let [tag :holdings
-        title "Account Holdings"
+  [navigation account report-currency report-time holdings]
+  (let [title "Account Holdings"
         caption (str "Account Holdings as of "
                      (format-date (minus report-time (millis 1))))
         table [:table
@@ -140,14 +244,13 @@
                 [:th ""]
                 [:th.number
                  (format-currency (reduce #(+ %1 (:cost %2)) 0 (vals holdings)))]]]]
-    (render-report tag title account report-currency caption table)))
+    (render-report navigation title account report-currency caption table)))
 
 (defn render-gains
   "Renders a report showing the realized gain/loss for the given account over
    the given time interval and in the given reporting currency."
-  [account report-currency report-interval gains]
-  (let [tag :gains
-        title "Realized Gain Loss"
+  [navigation account report-currency report-interval gains]
+  (let [title "Realized Gain Loss"
         caption (str "Realized Gain Loss from "
                      (format-date (start report-interval))
                      " to "
@@ -196,14 +299,13 @@
                 [:th.number
                  (format-currency (reduce #(+ %1 (- (:proceeds %2) (:cost %2))) 0 gains))]
                 [:th ""]]]]
-    (render-report tag title account report-currency caption table)))
+    (render-report navigation title account report-currency caption table)))
 
 (defn render-activities
   "Renders a report showing the trading activity for the given account over
    the given time interval and in the given reporting currency."
-  [account report-currency report-interval activities]
-  (let [tag :activities
-        title "Trading Activity"
+  [navigation account report-currency report-interval activities]
+  (let [title "Trading Activity"
         caption (str "Trading Activity from "
                      (format-date (start report-interval))
                      " to "
@@ -232,5 +334,5 @@
                     [:td.number (if price (format-currency price) "")]
                     [:td.number (if credit (format-currency credit) "")]]))
                ]]
-    (render-report tag title account report-currency caption table)))
+    (render-report navigation title account report-currency caption table)))
 

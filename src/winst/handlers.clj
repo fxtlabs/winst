@@ -17,7 +17,19 @@
   "Parses a string and returns a non-negative integer.
    It assumes the given string only contains digits."
   [s]
-  (Integer/parseInt s 10))
+  (when s (Integer/parseInt s 10)))
+
+(defn- get-navigation-data
+  "Returns a map with all the info necessary to build navigation menus
+   for all report pages."
+  [request report]
+  {:url-builder (get request :url-builder)
+   :accounts (get request :accounts)
+   :account (get request :account)
+   :report report
+   :year (parse-int (get-in request [:route-params :year]))
+   :month (parse-int (get-in request [:route-params :month]))
+   :currency (get-in request [:query-params "currency"])})
 
 
 (defn- wrap-account
@@ -30,7 +42,7 @@
   (fn [request]
     (if-let [account-name (get-in request [:route-params :account])]
       (if-let [account (get accounts (keyword (lower-case account-name)))]
-        (handler (assoc request :account account))
+        (handler (assoc request :account account, :accounts accounts))
         (render-error nil (str "Account " account-name " does not exist!")))
       (render-error nil "URL is missing account name!"))))
 
@@ -56,7 +68,7 @@
   [handler]
   (fn [request]
     (let [account (:account request)
-          report-currency-name (get (:query-params request) "currency")
+          report-currency-name (get-in request [:query-params "currency"])
           report-currency (get-report-currency account report-currency-name)
           exchange-rate-lookup (get-exchange-rate-lookup (:currency account)
                                                          report-currency)
@@ -171,14 +183,15 @@
                         (take-while (partial dated-before? report-time))
                         (convert-activities exchange-rate-lookup))
         holdings (compute-holdings activities)]
-    (render-holdings account report-currency report-time holdings)))
+    (render-holdings (get-navigation-data request :holdings)
+                     account report-currency report-time holdings)))
 
 (defn holdings-handler
   "Returns a handler capable of responding to holdings requests for the
    given account."
-  [account]
+  [accounts]
   (-> handle-holdings
-      wrap-report-time wrap-report-currency (wrap-account account)))
+      wrap-report-time wrap-report-currency (wrap-account accounts)))
 
 
 (defn- handle-activities
@@ -192,14 +205,15 @@
   (let [activities (->> account :activities
                         (filter (partial dated-within? report-interval))
                         (convert-activities exchange-rate-lookup))]
-    (render-activities account report-currency report-interval activities)))
+    (render-activities (get-navigation-data request :activities)
+                       account report-currency report-interval activities)))
 
 (defn activities-handler
   "Returns a handler capable of responding to activity requests for
    the given account."
-  [account]
+  [accounts]
   (-> handle-activities
-      wrap-report-interval wrap-report-currency (wrap-account account)))
+      wrap-report-interval wrap-report-currency (wrap-account accounts)))
 
 
 (defn- handle-gains
@@ -218,12 +232,13 @@
                    compute-realized-gains
                    (drop-while
                     (partial dated-before? (ct/start report-interval))))]
-    (render-gains account report-currency report-interval gains)))
+    (render-gains (get-navigation-data request :gains)
+                  account report-currency report-interval gains)))
 
 (defn gains-handler
   "Returns a handler capable of responding to realized gain/loss requests
    for the given account."
-  [account]
+  [accounts]
   (-> handle-gains
-      wrap-report-interval wrap-report-currency (wrap-account account)))
+      wrap-report-interval wrap-report-currency (wrap-account accounts)))
 

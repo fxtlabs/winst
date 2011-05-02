@@ -9,7 +9,41 @@
         [hiccup.middleware :only (wrap-base-url)]
         [winst.handlers :only
          (holdings-handler activities-handler gains-handler)]
+        [winst.currency :only (currency-name)]
         [winst.presentation :only (render-not-found)]))
+
+(defn- build-url
+  "Returns a URL for the request described by the supplied parameter map.
+   Possible keys are: :account, :report (:holdings, :activities, :gains),
+   :year, :month, and :currency."
+  [params]
+  (str "/accounts/" (name (:account params)) "/" (name (:report params))
+       (if-let [year (:year params)] (str "/" year))
+       (if-let [month (:month params)] (str "/" month))
+       (if-let [currency (:currency params)]
+         (str "?currency=" (currency-name currency)))))
+
+(defn- wrap-url-builder
+  "Middleware that computes a URL builder from the request parameters and
+   adds it to the request under the :url-builder key.
+   When invoked with a map parameter, the URL builder returns a URL
+   that is the same as the current request, but where parts have been
+   modified according to the map supplied. Possible keys are: :account,
+   :report (:holdings, :activities, :gains), :year, :month, and :currency."
+  [handler report]
+  (fn [request]
+    (let [kvs [[:account (get-in request [:route-params :account])]
+               [:report report]
+               [:year (get-in request [:route-params :year])]
+               [:month (get-in request [:route-params :month])]
+               [:currency (get-in request [:query-params "currency"])]]
+          default-params (->> kvs
+                              (remove (fn [[k v]] (nil? v)))
+                              (apply concat)
+                              (apply hash-map))
+          url-builder (fn [params] (build-url (merge default-params params)))]
+      (handler (assoc request :url-builder url-builder)))))
+
 
 (defvar- re-account #"[a-zA-Z][a-zA-Z0-9]*"
   "The regular expression used to describe valid account names in a URL.")
@@ -50,10 +84,10 @@
    specify the currency to be used for the report. Possible values are USD
    or CAD."
   [accounts]
-  (let [accounts (apply hash-map (mapcat (fn [a] [(:tag a) a]) accounts))
-        handle-holdings (holdings-handler accounts)
-        handle-activities (activities-handler accounts)
-        handle-gains (gains-handler accounts)
+  (let [accounts (apply sorted-map (mapcat (fn [a] [(:tag a) a]) accounts))
+        handle-holdings (wrap-url-builder (holdings-handler accounts) :holdings)
+        handle-activities (wrap-url-builder (activities-handler accounts) :activities)
+        handle-gains (wrap-url-builder (gains-handler accounts) :gains)
         rts (routes
              (GET ["/accounts/:account/holdings/:year/:month"
                    :account re-account :year re-year :month re-month] _
