@@ -23,3 +23,6 @@ td.number, th.number {
     text-align: right;
     max-width: 5em;
 }
+.empty {
+    background-color: red;
+}

@@ -3,7 +3,8 @@
    for the trading activity, holdings, and realized gains/losses of an
    account over a specified period of time."
   {:author "Filippo Tampieri <fxt@fxtlabs.com>"}
-  (:use [clojure.contrib.def :only (defvar-)]
+  (:use [clojure.set :only (intersection)]
+        [clojure.contrib.def :only (defvar-)]
         hiccup.core
         hiccup.page-helpers
         [clj-time.core :only (now minus millis start end year month)]
@@ -132,27 +133,43 @@
   [month]
   (format "%02d" month))
 
+(defn- build-has-activity-p
+  "Returns a predicate that checks whether an account has seen any activity
+   in a given period (a full year or a specific month [1,12])."
+  [account]
+  (let [activity-periods
+        (set (for [{dt :date} (:activities account)] [(year dt) (month dt)]))]
+    (fn
+      ([year month]
+         (contains? activity-periods [year month]))
+      ([year]
+         (not (empty? (intersection
+                       (set (for [month (range 1 13)] [year month]))
+                       activity-periods)))))))
+
 (defn- report-year
   "Returns the elements used to navigate to the reports for the given
    year or available months within that year for the current account,
    report type, and currency."
   [{url-builder :url-builder, account :account,
-    current-year :year, current-month :month} yr]
+    current-year :year, current-month :month} has-activity? yr]
   (let [inception (account-inception account)
         today (now)
         start-month (if (= yr (year inception)) (month inception) 1)
         end-month (if (= yr (year today)) (month today) 12)]
     (list
-     (if (and (= yr current-year) (nil? current-month))
-       [:li.selected yr]
-       [:li (link-to (url-builder {:year yr}) yr)])
+     (let [attrs (if (has-activity? yr) {} {:class "empty"})]
+       (if (and (= yr current-year) (nil? current-month))
+         [:li.selected attrs yr]
+         [:li attrs (link-to (url-builder {:year yr}) yr)]))
      [:li.months
       [:ul
        (for [month (range start-month (inc end-month))]
-         (if (and (= yr current-year) (= month current-month))
-           [:li.selected (format-month month)]
-           [:li (link-to (url-builder {:year yr, :month month})
-                         (format-month month))]))]])))
+         (let [attrs (if (has-activity? yr month) {} {:class "empty"})]
+           (if (and (= yr current-year) (= month current-month))
+             [:li.selected attrs (format-month month)]
+             [:li attrs (link-to (url-builder {:year yr, :month month})
+                                 (format-month month))])))]])))
 
 (defn- report-periods
   "Returns the <div> element used to navigate to the reports for all
@@ -160,17 +177,18 @@
   [{url-builder :url-builder, account :account,
     current-report :report, current-year :year, current-month :month,
     :as navigation}]
-  [:div.periods
-   [:ul
-    [:li.header "Reporting Periods"]
-    (let [label (if (= current-report :holdings)
-                  "Current day"
-                  "Inception - Current day")]
-      (if (or current-year current-month)
-        [:li (link-to (url-builder {:year nil, :month nil}) label)]
-        [:li.selected label]))
-    (for [y (range (year (account-inception account)) (inc (year (now))))]
-      (report-year navigation y))]])
+  (let [has-activity? (build-has-activity-p account)]
+    [:div.periods
+     [:ul
+      [:li.header "Reporting Periods"]
+      (let [label (if (= current-report :holdings)
+                    "Current day"
+                    "Inception - Current day")]
+        (if (or current-year current-month)
+          [:li (link-to (url-builder {:year nil, :month nil}) label)]
+          [:li.selected label]))
+      (for [y (range (year (account-inception account)) (inc (year (now))))]
+        (report-year navigation has-activity? y))]]))
 
 (defn- account-info
   "Returns the <div> element containing the info for the given account."
