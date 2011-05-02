@@ -3,6 +3,7 @@
    and realized gains/losses for an account over a specified period of time."
   {:author "Filippo Tampieri <fxt@fxtlabs.com>"}
   (:use [clojure.contrib.def :only (defvar-)]
+        [ring.util.response :only (redirect)]
         [compojure.core :only (routes GET)]
         [compojure.route :only (resources not-found)]
         [compojure.handler :only (site)]
@@ -84,11 +85,15 @@
    specify the currency to be used for the report. Possible values are USD
    or CAD."
   [accounts]
-  (let [accounts (apply sorted-map (mapcat (fn [a] [(:tag a) a]) accounts))
+  (let [default-account (first accounts)
+        accounts (apply sorted-map (mapcat (fn [a] [(:tag a) a]) accounts))
         handle-holdings (wrap-url-builder (holdings-handler accounts) :holdings)
         handle-activities (wrap-url-builder (activities-handler accounts) :activities)
         handle-gains (wrap-url-builder (gains-handler accounts) :gains)
         rts (routes
+             (GET "/" _
+                  (redirect (build-url {:account (:tag default-account)
+                                        :report :holdings})))
              (GET ["/accounts/:account/holdings/:year/:month"
                    :account re-account :year re-year :month re-month] _
                   handle-holdings)

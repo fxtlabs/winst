@@ -7,7 +7,6 @@ TODO
 * Add sanity checks on activity list
 * Write README file
 * Sell/Buy 'at' or 'for' ('at' may imply the amount given is 'per share')
-* Add navigation
 * More CSS
 * Should I create/maintain an hg branch (git) to keep the hg repo up
   to date?
