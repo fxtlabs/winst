@@ -15,6 +15,13 @@
           activity-type-name
           format-date format-quantity format-currency format-percentage)]))
 
+(defn- class-attrs
+  "Returns a map with a single :class key with the concatenation of all
+   the non-nil class names supplied."
+  [& names]
+  (let [s (->> names (remove nil?) (interpose " "))]
+    (if (empty? s) {} {:class (apply str s)})))
+
 (defn- account-inception
   "Returns the date of inception of a given account. It assumes the account
    activities are sorted chronologically and returns the date of the first
@@ -94,8 +101,8 @@
   [{url-builder :url-builder,
     current-report-type :report, current-currency :currency}]
   [:header
-   [:h1 "Winst"]
-   [:div.reports
+   [:h1 "winst"]
+   [:nav.reports
     [:ul
      (for [[report-type report-name] [[:holdings "Holdings"]
                                       [:activities "Activity"]
@@ -103,7 +110,7 @@
        (if (= report-type current-report-type)
          [:li.selected report-name]
          [:li (link-to (url-builder {:report report-type}) report-name)]))]]
-   [:div.currencies
+   [:nav.currencies
     [:ul
      (let [current-currency (if (nil? current-currency)
                               current-currency
@@ -119,9 +126,9 @@
   "Returns the <div> element used to navigate among the available accounts
    for the current report type, reporting period and currency."
   [{url-builder :url-builder, current-account :account, accounts :accounts}]
-  [:div.accounts
+  [:nav.accounts
+   [:h2 "Accounts"]
    [:ul
-    [:li.header "Accounts"]
     (for [[_ account] accounts]
       (if (= (:tag account) (:tag current-account))
         [:li.selected (:name account)]
@@ -158,17 +165,20 @@
         start-month (if (= yr (year inception)) (month inception) 1)
         end-month (if (= yr (year today)) (month today) 12)]
     (list
-     (let [attrs (if (has-activity? yr) {} {:class "empty"})]
+     (let [empty-class (if-not (has-activity? yr) "empty")]
        (if (and (= yr current-year) (nil? current-month))
-         [:li.selected attrs yr]
-         [:li attrs (link-to (url-builder {:year yr}) yr)]))
+         [:li (class-attrs "selected" empty-class) yr]
+         [:li (class-attrs empty-class)
+          (link-to (url-builder {:year yr :month nil}) yr)]))
      [:li.months
       [:ul
        (for [month (range start-month (inc end-month))]
-         (let [attrs (if (has-activity? yr month) {} {:class "empty"})]
+         (let [empty-class (if-not (has-activity? yr month) "empty")]
            (if (and (= yr current-year) (= month current-month))
-             [:li.selected attrs (format-month month)]
-             [:li attrs (link-to (url-builder {:year yr, :month month})
+             [:li (class-attrs "month" "selected" empty-class)
+              (format-month month)]
+             [:li (class-attrs "month" empty-class)
+              (link-to (url-builder {:year yr, :month month})
                                  (format-month month))])))]])))
 
 (defn- report-periods
@@ -178,16 +188,16 @@
     current-report :report, current-year :year, current-month :month,
     :as navigation}]
   (let [has-activity? (build-has-activity-p account)]
-    [:div.periods
+    [:nav.periods
+     [:h2 "Reporting Periods"]
      [:ul
-      [:li.header "Reporting Periods"]
       (let [label (if (= current-report :holdings)
                     "Current day"
                     "Inception - Current day")]
         (if (or current-year current-month)
           [:li (link-to (url-builder {:year nil, :month nil}) label)]
           [:li.selected label]))
-      (for [y (range (year (account-inception account)) (inc (year (now))))]
+      (for [y (range (year (now)) (dec (year (account-inception account))) -1)]
         (report-year navigation has-activity? y))]]))
 
 (defn- account-info
@@ -215,9 +225,9 @@
   [title account report-currency caption table]
   [:div#content
    [:h1 title]
-   (account-info account)
-   [:br]
-   (report-info report-currency)
+   [:div.report-intro
+    (account-info account)
+    (report-info report-currency)]
    [:h2 caption]
    table])
 

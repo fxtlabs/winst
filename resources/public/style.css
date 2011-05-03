@@ -1,3 +1,136 @@
+body {
+    margin: 0;
+    background: white;
+    color: black;
+    font: normal normal normal 14px/normal Helvetica, Arial, sans-serif;
+    line-height: 18px;
+}
+a {
+    color: #E92;
+    text-decoration: none;
+}
+a:hover {
+    color: #F51;
+}
+a:hover, a:active {
+    outline: none;
+}
+.empty a {
+    color: #E92;
+    text-decoration: line-through;
+}
+
+.container {
+    position:relative;
+    min-width: 960px;
+    margin: 0 20px;
+}
+header {
+    overflow: hidden;
+    padding: 20px 0 30px 0;
+}
+#content {
+    float: left;
+    min-width: 620px;
+}
+#sidebar {
+    float: left;
+    width: 304px;
+    margin-right: 36px;
+}
+footer {
+    clear: both;
+    height: 60px;
+    color: #DDD;
+    background-color: #666;
+    border-top: 2px solid #777;
+    border-bottom: 2px solid #777;
+}
+
+header h1 {
+    float: left;
+    width: 340px;
+    font-size: 70px;
+    margin: 0.3em 0;
+}
+nav {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #DDD;
+    border: 2px solid #777;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+}
+nav ul {
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav li.selected {
+    color: #F51;
+}
+nav li.selected.empty {
+    color: #F51;
+    text-decoration: line-through;
+}
+nav li.selected::after {
+    content: "*";
+}
+
+header nav {
+    float: left;
+    margin-top: 10px;
+    margin-right: 30px;
+}
+header nav li {
+    float: left;
+    padding: 10px 20px;
+    text-align: center;
+    border-left: 1px solid #AAA;
+}
+header nav li:first-child {
+    border-width: 0;
+}
+
+#sidebar nav {
+    margin-bottom: 30px;
+}
+#sidebar nav h2 {
+    margin: 0;
+    padding: 10px 20px;
+    color: #DDD;
+    background-color: #666;
+}
+#sidebar nav li {
+    margin: 0;
+    padding: 10px 20px;
+    border-top: 1px solid #AAA;
+}
+#sidebar nav li.months {
+    overflow: hidden;
+    padding: 0 10px 0 20px;
+}
+#sidebar nav li.month {
+    float: left;
+    display: block;
+    width: 22px;
+    padding: 10px 0;
+    border-width: 0;
+}
+
+div.report-intro {
+    overflow: hidden;
+    margin: 30px 0 40px 0;
+}
+div.account-info {
+    float: left;
+}
+div.report-info {
+    float: right;
+}
+
 table {
     border-collapse: separate;
     border-spacing: 15pt 5pt;
@@ -22,7 +155,4 @@ td.activity, th.activity {
 td.number, th.number {
     text-align: right;
     max-width: 5em;
-}
-.empty {
-    background-color: red;
 }
