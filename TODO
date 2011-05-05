@@ -8,7 +8,6 @@ TODO
 * Write README file
 * Sell/Buy 'at' or 'for' ('at' may imply the amount given is 'per
   share')
-* Fix 404 Not Found page
 * Should 500 Errors be caught and reported by the server? (as opposed
   to getting stack traces are the console; oh well)
 * Move examples files into winst.example.* namespaces

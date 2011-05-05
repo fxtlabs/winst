@@ -46,9 +46,10 @@
 
 (defn- page-header
   "Returns the <header> element used by all pages."
-  [{:keys [title] :as slots}]
+  []
   [:header
-   [:h1 title]])
+   [:div#logo
+    [:h1 "winst"]]])
 
 (defn- page-footer
   "Returns the <footer> element used by all pages."
@@ -63,8 +64,10 @@
    function corresponding to the :content key in the given slots map."
   [{:keys [content] :as slots}]
   [:body
+   (page-header)
    [:div#main.container
-    (page-header slots)
+    (if-let [title (:title slots)]
+      [:h1 title])
     (content slots)]
    (page-footer slots)])
 
