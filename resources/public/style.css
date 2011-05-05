@@ -90,7 +90,7 @@ header {
     padding-left: 360px;
 }
 #content {
-    overflow: auto;
+    overflow-y: auto;
 }
 #sidebar {
     float: left;
@@ -169,6 +169,7 @@ header nav li:first-child {
 #sidebar nav li.months {
     overflow: auto;
     padding: 0 10px 0 20px;
+    border-style: dashed;
 }
 #sidebar nav li.month {
     float: left;
@@ -194,16 +195,14 @@ table {
     border-collapse: separate;
     border-spacing: 0 0;
 }
-tr:nth-child(odd) {
-    background-color: #DDD;
-}
-tr:first-child {
+thead tr, tfoot tr {
+    font-weight: bold;
+    vertical-align: top;
     color: #DDD;
     background-color: #666;
 }
-th {
-    font-weight: bold;
-    vertical-align: top;
+tbody tr:nth-child(even) {
+    background-color: #DDD;
 }
 th, td {
     padding: 5px 7px;
@@ -217,13 +216,11 @@ th:last-child, td:last-child {
 }
 td.date, th.date {
     text-align: left;
-    max-width: 80px;
+    white-space: nowrap;
 }
 td.activity, th.activity {
     text-align: left;
-    max-width: 80px;
 }
 td.number, th.number {
     text-align: right;
-    max-width: 100px;
 }

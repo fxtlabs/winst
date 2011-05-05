@@ -1,0 +1,27 @@
+body {
+    background: white;
+    color: black;
+    font: normal normal normal 11px/normal Helvetica, Arial, sans-serif;
+    line-height: 14px;
+}
+header, footer, #sidebar {
+    display: none;
+}
+#main {
+    margin: 10px 10px;
+    padding: 20px 20px;
+}
+thead th {
+    border-bottom: 1px solid black;
+}
+tfoot th {
+    border-top: 1px solid black;
+}
+thead tr, tfoot tr {
+    color: black;
+    background-color: transparent;
+}
+tbody tr:nth-child(even) {
+    background-color: transparent;
+}
+
