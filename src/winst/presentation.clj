@@ -69,7 +69,7 @@
 (defn- render-page-template
   "Renders a page for the given slots map."
   [slots]
-  (html5
+  (html5 {:xml? true}
    (page-head slots)
    (page-body slots)))
 
@@ -238,7 +238,7 @@
 (defn- render-report
   "Renders a report page with the given pieces."
   [navigation title account report-currency caption table]
-  (html5
+  (html5 {:xml? true}
    (page-head {:title (str "Winst - " title)})
    [:body
     (report-header navigation)

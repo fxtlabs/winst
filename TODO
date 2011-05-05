@@ -6,8 +6,14 @@ TODO
 * Add tests
 * Add sanity checks on activity list
 * Write README file
-* Sell/Buy 'at' or 'for' ('at' may imply the amount given is 'per share')
-* More CSS
+* Sell/Buy 'at' or 'for' ('at' may imply the amount given is 'per
+  share')
+* Fix 404 Not Found page
+* Should 500 Errors be caught and reported by the server? (as opposed
+  to getting stack traces are the console; oh well)
+* CSS for printing
+* Move examples files into winst.example.* namespaces
+* Should the example files be included in the library?
 * Should I create/maintain an hg branch (git) to keep the hg repo up
   to date?
 * Release 1.0
