@@ -47,39 +47,3 @@ symbol.
 
 * How should commissions be accounted for? Explicitly? Implicitly?
 
-
-WEBSITE
--------
-
-Sidebar has 3 sections:
-
-1. Description
-2. Holdings - lists available months and years for holdings list
-3. Realized gains - lists available years for realized gains list
-
-Logo takes you to / (no sidebar)
-Top tabs list available accounts; first tab is All
-
-Buttonset right of top tabs selects reporting currency
-
-Print uses its own CSS and hides logo, navigation menu, currency
-buttonset, sidebar, and footer
-
-WEBSITE 2
----------
-
-Otherwise, there could be a sidebar with two sections:
-
-top
-  list of accounts
-
-bottom
-  list of years for the selected account
-  (each year can be clicked or expanded to see a list of months)
-
-The top of the page would have three tabs (activities, holdings, and
-gains) and a toggle for the reporting currency (account currency or
-CAD).
-
-The page would keep state as you move around accounts, etc.
-

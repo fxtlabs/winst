@@ -2,11 +2,11 @@
   :description "Winst=gain. Track your trading activities, holdings, and realized gains in multiple currencies."
   :url "https://github.com/fxtlabs/winst"
   :dependencies [[org.clojure/clojure "1.2.1"]
-                 [clj-time "0.3.0-SNAPSHOT"]
+                 [clj-time "0.3.0"]
                  [clojure-csv "1.2.4"]
-                 [hiccup "0.3.4"]
-                 [ring "0.3.7"]
-                 [compojure "0.6.2"]]
+                 [hiccup "0.3.5"]
+                 [ring "0.3.8"]
+                 [compojure "0.6.3"]]
   :dev-dependencies 
   [[com.fxtlabs/autodoc "0.8.0-SNAPSHOT"
     :exclusions [org.clojure/clojure org.clojure/clojure-contrib]]]
