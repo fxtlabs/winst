@@ -1,5 +1,56 @@
-body {
+html, body, div, span, a, img,
+h1, h2, h3, h4, h5, h6, hgroup, p,
+dl, dialog, dt, dd, ol, ul, li, 
+abbr, acronym, address, b, big, blockquote, 
+cite, code, del, dfn, em, i, ins, kbd, pre, q, 
+samp, tt, var, small, strong, sub, sup, 
+object, iframe, form, fieldset, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, footer, header, nav, section,
+figure, menu, time, mark, audio, video {
+    font-family: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    font-style: inherit;
+    vertical-align: baseline;
+    white-space: normal;
+    text-align: left;
     margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+textarea, input, select	{
+    font-family: inherit;
+    font-size: 100%;
+    font-weight: normal;
+    font-style: normal;
+    white-space: normal;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+article, aside, footer, header, nav, section,
+dialog, figure, hgroup, menu {
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+h1 {
+    font-size: 35px;
+    line-height: 44px;
+}
+h2 {
+    font-size: 28px;
+    line-height: 32px;
+    padding-bottom: 16px;
+}
+
+body {
+    overflow: auto;
     background: white;
     color: black;
     font: normal normal normal 14px/normal Helvetica, Arial, sans-serif;
@@ -20,53 +71,60 @@ a:hover, a:active {
     text-decoration: line-through;
 }
 
-.container {
-    position:relative;
-    min-width: 960px;
-    margin: 0 20px;
-}
 header {
-    overflow: hidden;
-    padding: 20px 0 30px 0;
+    overflow-y: hidden;
+    min-width: 960px;
+    margin-top: 20px;
+    padding-left: 360px;
+}
+#logo {
+    float: left;
+    width: 304px;
+    margin-left: -340px;
+}
+#main {
+    overflow-y: auto;
+    min-width: 960px;
+    margin-top: 50px;
+    padding-left: 360px;
 }
 #content {
-    float: left;
-    min-width: 620px;
+    overflow: auto;
 }
 #sidebar {
     float: left;
     width: 304px;
-    margin-right: 36px;
+    margin-left: -340px;
 }
 footer {
-    clear: both;
-    height: 60px;
+    overflow-y: auto;
+    margin-top: 30px;
+    padding: 20px 20px;
+    text-align: center;
     color: #DDD;
     background-color: #666;
     border-top: 2px solid #777;
     border-bottom: 2px solid #777;
 }
 
+footer a {
+    margin: 0 30px;
+}
+
 header h1 {
-    float: left;
-    width: 340px;
     font-size: 70px;
-    margin: 0.3em 0;
+    margin: 10px 0;
 }
 nav {
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
+    overflow: auto;
     background-color: #DDD;
     border: 2px solid #777;
     border-radius: 8px;
     -moz-border-radius: 8px;
 }
 nav ul {
-    overflow: hidden;
+    overflow: auto;
     list-style: none;
-    margin: 0;
-    padding: 0;
 }
 nav li.selected {
     color: #F51;
@@ -94,22 +152,22 @@ header nav li:first-child {
     border-width: 0;
 }
 
-#sidebar nav {
+#sidebar nav.accounts {
     margin-bottom: 30px;
 }
 #sidebar nav h2 {
-    margin: 0;
     padding: 10px 20px;
     color: #DDD;
     background-color: #666;
+    font-size: 18px;
+    line-height: 24px;
 }
 #sidebar nav li {
-    margin: 0;
     padding: 10px 20px;
     border-top: 1px solid #AAA;
 }
 #sidebar nav li.months {
-    overflow: hidden;
+    overflow: auto;
     padding: 0 10px 0 20px;
 }
 #sidebar nav li.month {
@@ -121,38 +179,51 @@ header nav li:first-child {
 }
 
 div.report-intro {
-    overflow: hidden;
+    overflow: auto;
     margin: 30px 0 40px 0;
 }
 div.account-info {
     float: left;
 }
 div.report-info {
-    float: right;
+    float: left;
+    margin-left: 40px;
 }
 
 table {
     border-collapse: separate;
-    border-spacing: 15pt 5pt;
+    border-spacing: 0 0;
 }
-tr:nth-child(even) {
-    background: #DDD;
+tr:nth-child(odd) {
+    background-color: #DDD;
+}
+tr:first-child {
+    color: #DDD;
+    background-color: #666;
 }
 th {
+    font-weight: bold;
     vertical-align: top;
 }
 th, td {
+    padding: 5px 7px;
     text-align: left;
+}
+th:first-child, td:first-child {
+    padding-left: 12px;
+}
+th:last-child, td:last-child {
+    padding-right: 12px;
 }
 td.date, th.date {
     text-align: left;
-    max-width: 5em;
+    max-width: 80px;
 }
 td.activity, th.activity {
     text-align: left;
-    max-width: 5em;
+    max-width: 80px;
 }
 td.number, th.number {
     text-align: right;
-    max-width: 5em;
+    max-width: 100px;
 }
